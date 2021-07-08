@@ -1,0 +1,170 @@
+
+/*** General ***/
+
+body {
+   /* min-height: 100vh; */
+   background-color: #E2EDEF;
+}
+
+form label {
+   font-weight: 600;
+   
+}
+
+input:focus, select:focus, textarea:focus {
+   box-shadow: 0 0 0 .25rem #126d8254 !important;
+   border-color: #126d8280 !important;
+}
+
+input[type=range]:focus {
+   box-shadow: none !important;
+   border-color: none !important;
+   -webkit-appearance: none;
+}
+
+
+
+
+
+::selection {
+   background-color: #198faa;
+   color: #eeeff0;
+}
+
+
+/*** Header ***/
+header {
+   /* position: sticky;
+   top: 0;
+   z-index: 900; */
+}
+
+nav.navbar{
+   background-color: #126E82;
+}
+
+/* .btn-header {
+   background-color: #fff;
+   color: #0A424E !important;
+   padding-left: 1.5rem !important;
+   padding-right: 1.5rem !important;
+   margin-left: 0;
+   text-align: center;
+   border-radius: 2rem;
+} */
+
+.btn-header {
+   background-color: #fff;
+   color: #0A424E !important;
+   font-weight: 500;
+   padding-left: 1.5rem !important;
+   padding-right: 1.5rem !important;
+   margin-left: .5rem;
+   text-align: center;
+   border-radius: 2rem;
+}
+
+.btn-header:hover {
+   background-color: #f7f7f7;
+   color: #0e6d83 !important;
+}
+
+#svg-header {
+   background-image: url("./img/wave-header.svg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: top;
+   min-height: 10rem;
+}
+
+
+
+/*! Main */
+main {
+   min-height: 60vh;
+}
+
+
+/*! Inicio */
+.card-home {
+   border: none;
+   box-shadow: .2rem .2rem .5rem .1rem #126d824d;
+}
+
+.card-home:hover {
+   cursor: pointer;
+   background-color: #f3f3f3;
+   box-shadow: .1rem .1rem .5rem .1rem #126d824d;
+}
+
+.card-home>.card-body {
+   padding: 2rem;
+   color: #0A424E;
+}
+
+.subtitle {
+   border-bottom: .2rem solid #126E82;
+}
+
+.card-gastos {
+   border: none;
+   color: #0c4f5e;
+   box-shadow: 0rem 0rem .3rem 0rem #126d8227;
+}
+
+
+
+/*! Agregar  */
+#formAgregar {
+   background-color: #ffffff;
+   color: #0c4f5e;
+   border-radius: .8rem;
+   box-shadow: 0rem 0rem .3rem 0rem #126d8244;
+}
+
+.alertAgregar {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: .5rem;
+   /* transform: translateX(-5rem); */
+}
+
+
+/*! Gastos */
+.gasto {
+   min-height: 11.5rem;
+}
+
+.btn-edit {
+   background-color: #ffc107;
+   border-radius: 100%;
+   display: inline-block;
+   padding: .8rem;
+}
+.btn-delete {
+   background-color: #d42032;
+   border-radius: 100%;
+   display: inline-block;
+   padding: .8rem;
+}
+
+
+
+
+
+/*! Footer */
+#svg-footer {   
+   background-image: url("./img/wave-footer.svg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   height: 12rem;
+}
+
+footer {
+   background-color: #126E82;
+   color: #fff;
+}
+
+
+
