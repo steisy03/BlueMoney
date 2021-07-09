@@ -21,13 +21,13 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" id="linkInicio" aria-current="page" href="#" onclick="newPage('/views/inicio.html')"">Inicio</a>
+                <a class="nav-link active" id="linkInicio" aria-current="page" href="#">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="linkGastos" href="#" onclick="newPage('/views/gastos.html')">Gastos</a>
+                <a class="nav-link" id="linkGastos" href="#gastos">Gastos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link btn-header" id="linkAgregar" href="./views/agregar.html">Agregar</a>
+                <a class="nav-link btn-header" id="linkAgregar" href="#agregar">Agregar</a>
               </li>
             </ul>
           </div>
@@ -49,19 +49,6 @@
 
   <!-- <script src="main.js"></script> -->
   <script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
-  <script>
-    function loadPage(href)
-    {
-      let xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("GET", href, false);
-      xmlhttp.send();
-      return xmlhttp.responseText;
-    }
 
-    function newPage(href)
-    {
-      document.getElementById('root').innerHTML = loadPage(href);
-    }
-  </script>
 </body>
 </html>

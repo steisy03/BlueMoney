@@ -12,4 +12,5 @@ window.onload = function ()  {
    ];
 
    new Router("root", routes);
+
 }
