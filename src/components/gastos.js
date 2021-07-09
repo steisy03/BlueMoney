@@ -1,9 +1,7 @@
 import Route from "../libs/route";
 
 import { getGastos } from "./funciones";
-
-
-let allGastos = getGastos();
+let allGastos;
 
 let contentGastos,
 cantidadGastos;
@@ -19,6 +17,7 @@ class Gastos extends Route {
 
    async whenMounted() {
       //When document ready
+      allGastos = getGastos();
       cantidadGastos = document.getElementById("cantidadGastos");
       contentGastos = document.getElementById("contentGastos");
       
