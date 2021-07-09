@@ -1,11 +1,4 @@
 import Route from "../libs/route";
-//elementos
-var inputMonto = undefined;
-var selectMoneda = undefined;
-var selectCategoria = undefined;
-var inputFecha = undefined;
-var textareaDescripcion = undefined;
-//fin elementos
 
 class Agregar extends Route {
    constructor() {
@@ -14,44 +7,44 @@ class Agregar extends Route {
          default: false
       });
       this.onMountCb = this.whenMounted;
-      
    }
 
    async whenMounted() {
-      //document ready
-      document.getElementById("formAgregar").addEventListener("submit", this.agregar);
-      
-      inputMonto = document.getElementById("inputMonto");
-      // selectMoneda = document.getElementById("selectMoneda");
-      //TODO: agregar los radio buttons para la moneda
-      selectCategoria = document.getElementById("selectCategoria");
-      inputFecha = document.getElementById("inputFecha");
-      textareaDescripcion = document.getElementById("textareaDescripcion");
+      //When document ready
+      this.agregar();
    }
    
-   agregar(e) {
+   agregar() {
+
+      document.getElementById("formAgregar").addEventListener('submit', (e)=>{
+         e.preventDefault();
+         const inputMonto = document.getElementById("inputMonto");
+         // const selectMoneda = document.getElementById("selectMoneda");
+         const selectCategoria = document.getElementById("selectCategoria");
+         const inputFecha = document.getElementById("inputFecha");
+         const textareaDescripcion = document.getElementById("textareaDescripcion");
       
-      let gastos = [];
-      let nuevoGasto = {
-         monto: inputMonto.value,
-         // moneda: selectMoneda.value,
-         //TODO: agregar radio buttons
-         categoria: selectCategoria.value,
-         fecha: inputFecha.value,
-         descripcion: textareaDescripcion.value
-      }
+         let gastos = [];
+         let nuevoGasto = {
+            monto: inputMonto.value,
+            // moneda: selectMoneda.value,
+            categoria: selectCategoria.value,
+            fecha: inputFecha.value,
+            descripcion: textareaDescripcion.value
+         }
          
-      if(localStorage.getItem("Gastos")){
-         gastos = JSON.parse(localStorage.getItem("Gastos"));
-         gastos.unshift(nuevoGasto);
-         console.log(gastos);
-         localStorage.setItem("Gastos", JSON.stringify(gastos));
+         if(localStorage.getItem("Gastos")){
+            gastos = JSON.parse(localStorage.getItem("Gastos"));
+            gastos.unshift(nuevoGasto);
+            console.log(gastos);
+            localStorage.setItem("Gastos", JSON.stringify(gastos));
             
-      }else{
-         gastos.unshift(nuevoGasto);
-         console.log(gastos);
-         localStorage.setItem("Gastos", JSON.stringify(gastos));
-      }
+         }else{
+            gastos.unshift(nuevoGasto);
+            console.log(gastos);
+            localStorage.setItem("Gastos", JSON.stringify(gastos));
+         }
+      });
    }
 
 }
