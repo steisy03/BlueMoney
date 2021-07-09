@@ -29,15 +29,15 @@ function getGastos() {
 
    if (gastos == null) {
       gastos = [];
-      updateGastos(gastos)
+      updateGastos(gastos);
    }
    return gastos;
 }
 
 function updateGastos(gastos) {
-   localStorage.setItem("Gastos", JSON.stringify(gastos))
+   localStorage.setItem("Gastos", JSON.stringify(gastos));
 }
 
 //Fin funciones relacionadas con los Gastos
 
-export { changeFormStatusBootstrap, saveGastos }
+export { changeFormStatusBootstrap, saveGastos, getGastos }
