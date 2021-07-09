@@ -1,4 +1,5 @@
 import Route from "../libs/route";
+import { changeFormStatusBootstrap, saveGastos } from "./funciones"
 
 //Variables DOM
 let inputMonto,
@@ -20,6 +21,7 @@ class Agregar extends Route {
 
    async whenMounted() {
       //When document ready
+
       document.getElementById("formAgregar").addEventListener('submit', (e)=> {
          e.preventDefault(); 
          this.agregar();
@@ -31,24 +33,30 @@ class Agregar extends Route {
    
    agregar() {
       this.getElements();
-      let gastos = [];
       let nuevoGasto = {
          monto: inputMonto.value,
          moneda: radioMoneda.value,
          categoria: selectCategoria.value,
          fecha: inputFecha.value,
-         descripcion: textareaDescripcion.value
+         descripcion: textareaDescripcion.value.trim()
       }
       
-      if(localStorage.getItem("Gastos")){
-         gastos = JSON.parse(localStorage.getItem("Gastos"));
-         this.addValueLocalStorage(nuevoGasto, gastos);
-         
-      }else{
-         this.addValueLocalStorage(nuevoGasto, gastos);
-      }
+      if(inputMonto.value !== '' && 
+         selectCategoria.value !== '' && 
+         radioMoneda.value !== '' && 
+         inputFecha.value !== '' &&
+         textareaDescripcion.value.trim() !== ''){
 
-      this.alertAgregar();
+         saveGastos(nuevoGasto);
+
+         this.cleanValueElements();
+
+         this.alertAgregar();
+
+         changeFormStatusBootstrap(true);
+      }else {
+         changeFormStatusBootstrap(false);
+      }
    }
 
    getElements() {
@@ -67,12 +75,6 @@ class Agregar extends Route {
       textareaDescripcion.value = "";
    }
 
-   addValueLocalStorage(newGasto, Gastos) {
-      Gastos.unshift(newGasto);
-      localStorage.setItem("Gastos", JSON.stringify(Gastos));
-      this.cleanValueElements();
-   }
-
    alertAgregar() {
       //Mostar Alerta de agregado
       contentAlertAgregar.innerHTML = `
@@ -87,6 +89,7 @@ class Agregar extends Route {
          contentAlertAgregar.innerHTML = "";
       }, 3500);
    }
+   
 }
 
 const agregar = new Agregar();
