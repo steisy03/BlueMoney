@@ -1,6 +1,7 @@
 import Route from "../libs/route";
+import categorias from "./categorías";
 
-import { getGastos } from "./funciones";
+import { getCategorias, getGastos } from "./funciones";
 let allGastos;
 
 let contentGastos,
@@ -22,6 +23,21 @@ class Gastos extends Route {
       contentGastos = document.getElementById("contentGastos");
       
       this.showGastos();
+
+      const listaCategoria = document.getElementById('selectCategoria');
+
+      const selectCategorias = getCategorias();
+
+      let id = 1;
+
+      selectCategorias.forEach(element => {
+         console.log(element);
+         let option = document.createElement('option');
+         option.value = id;
+         option.innerHTML = element.nombre;
+         listaCategoria.appendChild(option);
+         id++;
+      });
    }
 
    showGastos(){

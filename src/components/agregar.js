@@ -1,5 +1,5 @@
 import Route from "../libs/route";
-import { changeFormStatusBootstrap, saveGastos } from "./funciones"
+import { changeFormStatusBootstrap, getCategorias, saveGastos } from "./funciones"
 
 //Variables DOM
 let inputMonto,
@@ -29,6 +29,21 @@ class Agregar extends Route {
 
       //Asignar el elemento a las Variables DOM
       this.getElements();
+
+      const listaCategoria = document.getElementById('selectCategoria');
+
+      const selectCategorias = getCategorias();
+
+      let id = 1;
+
+      selectCategorias.forEach(element => {
+         console.log(element);
+         let option = document.createElement('option');
+         option.value = id;
+         option.innerHTML = element.nombre;
+         listaCategoria.appendChild(option);
+         id++;
+      });
    }
    
    agregar() {
