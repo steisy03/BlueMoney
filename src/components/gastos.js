@@ -10,6 +10,7 @@ var contentGastos, cantidadGastos;
 let sCategoria;
 let iDescripcion;
 let sMoneda;
+let iFecha;
 //fin inputs
 
 class Gastos extends Route {
@@ -31,20 +32,19 @@ class Gastos extends Route {
       sCategoria = document.getElementById("sCategoria");
       iDescripcion = document.getElementById("iDescripcion");
       sMoneda = document.getElementById("sMoneda");
+      iFecha = document.getElementById("iFecha");
       //fin inputs
 
       //añadiendo evento update
       sCategoria.addEventListener("change", () => this.filtrar());
       iDescripcion.addEventListener("keyup", () => this.filtrar());
       sMoneda.addEventListener("change", () => this.filtrar());
+      iFecha.addEventListener("change", () => this.filtrar());
       //fin añadiendo evento update
 
       const selectCategorias = getCategorias();
-
       let id = 1;
-
       selectCategorias.forEach(element => {
-         console.log(element);
          let option = document.createElement('option');
          option.value = id;
          option.innerHTML = element.nombre;
@@ -86,6 +86,12 @@ class Gastos extends Route {
       if(sMoneda.value != ""){
          resultado = [];
          gastos = gastos.filter( gastos => gastos.moneda.includes(sMoneda.value));
+         resultado.push.apply(resultado,gastos);
+      }
+
+      if(iFecha.value != ""){
+         resultado = [];
+         gastos = gastos.filter( gastos => gastos.fecha == iFecha.value);
          resultado.push.apply(resultado,gastos);
       }
 
