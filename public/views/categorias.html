@@ -1,41 +1,35 @@
 <div class="row justify-content-center mb-5">
-    <div class="d-flex justify-content-center mb-4">
-      <h1>Agrega categoría</h1>
-    </div>
-    
-    <form class="p-4 col-11 col-md-8 col-lg-6 row justify-content-center needs-validation" id="formAgregar" >
-  
-      <div class="col-12 mb-3">
-        <input class="form-control" type="text" name="categoria" id="nombreCategoria" placeholder="Nombre de la categoría">
-      </div>
-  
-      <div class="col-12 col-lg-6 mb-3">
-        <select name="tipo" id="tipoCategoria" class="form-select">
-          <option selected disabled hidden>
-            Seleccione un tipo de categoría
-          </option>
-          <option value="ingreso">Ingreso</option>
-          <option value="gasto">Gasto</option>
-          <option value="ambos">Ambos</option>
-        </select>
-      </div>
-  
-      <div class="d-flex justify-content-center">
-        <button id="btnAgregar" type="submit" class="btn btn-primary" title="Guardar Gasto">Guardar</button>
-      </div>
-  
-    </form>
-  
-    <div class="col-12 row justify-content-center">
-      <div class="col-5">
-        
-        <div class="alert alert-success alertAgregar mt-3">
-          <img src="./assets/img/check.svg" alt="" class="me-2"  width="28" height="28">
-          <strong>Agregado</strong>
-        </div>
-            
-      </div>
-      
-    </div> 
-    
+  <div class="d-flex justify-content-center mb-4">
+    <h1>Agrega un categoría</h1>
   </div>
+
+  <form class="p-4 col-11 col-md-8 col-lg-6 row justify-content-center needs-validation" id="formCategoria" novalidate>
+
+    <div class="col-12 col-lg-6 mb-3">
+      <input id="nombreCategoria" class="form-control" type="text" name="nombrecategoria" placeholder="Nombre de la categoría" />
+    </div>
+
+    <div class="col-12 col-lg-6 mb-3">
+      <select name="tipoCategoria" id="tipoCategoria" class="form-select">
+        <option selected disabled hidden>
+          Seleccione un tipo de categoría
+        </option>
+        <option value="ingreso">Ingreso</option>
+        <option value="gasto">Gasto</option>
+        <option value="ambos">Ambos</option>
+      </select>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button id="btnAgregar" type="submit" class="btn btn-primary" title="Guardar Gasto">Guardar</button>
+    </div>
+  </form>
+
+  <div class="col-12 row justify-content-center">
+    <div class="col-5" id="contentAlertAgregar">
+
+    </div>
+
+  </div>
+
+</div>
