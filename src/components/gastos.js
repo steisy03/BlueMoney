@@ -1,15 +1,9 @@
 import Route from "../libs/route";
-<<<<<<< HEAD
-import categorias from "./categorías";
-
 import { getCategorias, getGastos } from "./funciones";
 let allGastos;
-=======
-import gastosTMP from "../template/gastosTMP";
-import { getGastos } from "./funciones";
->>>>>>> 706e8971d4b1668e9e371834f7516045d30d494e
 
-var allGastos;
+import gastosTMP from "../template/gastosTMP";
+
 var contentGastos, cantidadGastos;
 
 //inputs
@@ -44,9 +38,6 @@ class Gastos extends Route {
       iDescripcion.addEventListener("keyup", () => this.filtrar());
       sMoneda.addEventListener("change", () => this.filtrar());
       //fin añadiendo evento update
-      
-<<<<<<< HEAD
-      this.showGastos();
 
       const listaCategoria = document.getElementById('selectCategoria');
 
@@ -62,9 +53,7 @@ class Gastos extends Route {
          listaCategoria.appendChild(option);
          id++;
       });
-=======
       this.showGastos(allGastos);
->>>>>>> 706e8971d4b1668e9e371834f7516045d30d494e
    }
 
    showGastos(array){
