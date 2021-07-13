@@ -7,6 +7,8 @@ var contentGastos, cantidadGastos;
 
 //inputs
 let sCategoria;
+let iDescripcion;
+let sMoneda;
 //fin inputs
 
 class Gastos extends Route {
@@ -26,10 +28,14 @@ class Gastos extends Route {
 
       //inputs
       sCategoria = document.getElementById("sCategoria");
+      iDescripcion = document.getElementById("iDescripcion");
+      sMoneda = document.getElementById("sMoneda");
       //fin inputs
 
       //añadiendo evento update
-      sCategoria.addEventListener("change", () => this.updateCategoria());
+      sCategoria.addEventListener("change", () => this.filtrar());
+      iDescripcion.addEventListener("keyup", () => this.filtrar());
+      sMoneda.addEventListener("change", () => this.filtrar());
       //fin añadiendo evento update
       
       this.showGastos(allGastos);
@@ -48,14 +54,31 @@ class Gastos extends Route {
       });
    }
 
-   updateCategoria(){
-      if(sCategoria.value == 0){
-         this.showGastos(allGastos);
-         return;
+   filtrar(){
+      let gastos = allGastos;
+      let resultado = [];
+
+      if(iDescripcion.value != ""){
+         resultado = [];
+         gastos = gastos.filter( gastos => gastos.descripcion.includes(iDescripcion.value));
+         resultado.push.apply(resultado,gastos);
       }
-      let resultado = allGastos.filter( gastos => gastos.categoria == sCategoria.value);
+
+      if(sCategoria.value != 0){
+         resultado = [];
+         gastos = gastos.filter( gasto => gasto.categoria == sCategoria.value);
+         resultado.push.apply(resultado,gastos);
+      }
+
+      if(sMoneda.value != 0){
+         resultado = [];
+         gastos = gastos.filter( gastos => gastos.moneda.includes(sMoneda.value));
+         resultado.push.apply(resultado,gastos);
+      }
+
       this.showGastos(resultado);
    }
+
 }
 
 const gastos = new Gastos();
