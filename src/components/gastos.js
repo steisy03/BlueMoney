@@ -1,10 +1,13 @@
 import Route from "../libs/route";
-
+import gastosTMP from "../template/gastosTMP";
 import { getGastos } from "./funciones";
-let allGastos;
 
-let contentGastos,
-cantidadGastos;
+var allGastos;
+var contentGastos, cantidadGastos;
+
+//inputs
+let sCategoria;
+//fin inputs
 
 class Gastos extends Route {
    constructor(){
@@ -20,43 +23,38 @@ class Gastos extends Route {
       allGastos = getGastos();
       cantidadGastos = document.getElementById("cantidadGastos");
       contentGastos = document.getElementById("contentGastos");
+
+      //inputs
+      sCategoria = document.getElementById("sCategoria");
+      //fin inputs
+
+      //añadiendo evento update
+      sCategoria.addEventListener("change", () => this.updateCategoria());
+      //fin añadiendo evento update
       
-      this.showGastos();
+      this.showGastos(allGastos);
    }
 
-   showGastos(){
-      cantidadGastos.innerHTML = allGastos.length;
-      allGastos.forEach(gasto => {
-         contentGastos.innerHTML += `
-         <div class="col-12 col-md-6  mb-4">
-            <div class="card card-gastos gasto">
-               <div class="card-body row ">
-                  <div class="info col-9 ">
-                     <h4 class="card-title">${gasto.categoria}</h4>
-                     <p class="mb-1"><strong>${gasto.moneda}</strong> ${gasto.monto}</p>
-                     <p class="">${gasto.descripcion}</p>
-                     <p class="mb-0 ">${gasto.fecha}</p>
-                  </div>
-                  <div class="funciones col-3 row align-content-around p-0">
-         
-                     <div class="col-12 d-flex justify-content-end p-0">
-                     <a href="#" class="btn-edit" title="Editar">
-                        <img src="./assets/img/edit.svg" height="25" width="26" alt="">
-                     </a>
-                     </div>
-         
-                     <div class="col-12 d-flex justify-content-end p-0">
-                     <a href="#" class="btn-delete" title="Eliminar">
-                        <img src="./assets/img/delete.svg" height="25" width="26" alt="">
-                     </a>
-                     </div>
-         
-                  </div>
-               </div>
-            </div>
-         </div>
-         `;
+   showGastos(array){
+      cantidadGastos.innerHTML = array.length;
+      contentGastos.innerHTML = "";
+      array.forEach(gasto => {
+      contentGastos.innerHTML += gastosTMP
+         .replace("{{DESCRIPCION}}", gasto.descripcion)
+         .replace("{{MONEDA}}", gasto.moneda)
+         .replace("{{MONTO}}", gasto.monto)
+         .replace("{{CATEGORIA}}", gasto.categoria)
+         .replace("{{FECHA}}", gasto.fecha);
       });
+   }
+
+   updateCategoria(){
+      if(sCategoria.value == 0){
+         this.showGastos(allGastos);
+         return;
+      }
+      let resultado = allGastos.filter( gastos => gastos.categoria == sCategoria.value);
+      this.showGastos(resultado);
    }
 }
 
