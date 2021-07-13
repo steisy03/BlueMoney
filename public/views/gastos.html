@@ -1,31 +1,82 @@
 <div class="row justify-content-center">
 
   <div class="col-11 mb-4 ">
-    <div class="row justify-content-center">
-      <div class="card card-gastos col-md-9 col-lg-9 p-3">
+    <div class="row ">
+      <div class="card card-gastos col-md-12 col-lg-12 p-3">
+
         <div class="row">
+<<<<<<< HEAD
           <div class="col-12 col-md-6 mb-4">
             <h3 class="card-title">Categoria</h3>
             <select class="form-select selectCategoria" aria-label="Default select example" id="selectCategoria" name="Categoria"
               title="Categoría">
               <option selected disabled hidden>Seleccione una categoría</option>
             </select>
+=======
+          <div class="col-12 col-md-8 mb-8">
+            <h5 class="card-title">Descripcion</h5>
+            <input type="text" class="form-control" id="iDescripcion" placeholder="Digite la descripcion">
+>>>>>>> 706e8971d4b1668e9e371834f7516045d30d494e
           </div>
+        </div><br/>
 
-          <div class=" col-12 col-md-6">
-            <h3 class="card-title">Monto</h3>
-            <p class="p-0 m-0"><span>0 </span>&#x0003C;<span> 999</span></p>
-            <input type="range" class="form-range" name="" id="">
-          </div>
-
-          <div class="col-12 col-md-6">
-            <h3 class="card-title">Moneda</h3>
-            <select name="moneda" id="selectMoneda" class="form-select">
-              <option value="RD">RD</option>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
+        <div class="row">
+          <div class="col-12 col-md-4 mb-4">
+            <h5 class="card-title">Categoria</h5>
+            <select class="form-select" aria-label="Default select example" id="sCategoria" name="sCategoria"
+              title="Categoría">
+              <option selected value="0">Seleccione una categoría</option>
+              <option value="1">Categoria 1</option>
+              <option value="2">Categoria 2</option>
+              <option value="3">Categoria 3</option>
             </select>
           </div>
+         
+
+          <div class="col-12 col-md-4">
+            <h5 class="card-title">Moneda</h5>
+            <select name="sMoneda" id="sMoneda" class="form-select">
+              <option selected value="">Seleccione una moneda</option>
+              <option value="RD">RD</option>
+              <option value="USD">USD</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h5 class="card-title">Fecha</h5>
+            <input type="date" class="form-control" id="iFecha" placeholder="dd/mm/aaaa" name="iFecha" title="Fecha">
+          </div>
+        </div>
+
+
+        <div class="row">
+           <div class=" col-12 col-md-8">
+            <h5 class="card-title">Monto</h5>
+            <div class="row">
+              <div class=" col-6 col-md-6">
+                <div class="row">
+                  <div class=" col-3 col-md-3">
+                    <label>Desde</label>
+                  </div>
+                  <div class=" col-9 col-md-9">
+                    <input type="number" class="form-control" id="inputMonto" placeholder="0000.00" min="0" step="any" name="Monto" title="Monto">
+                  </div>
+                </div>
+                </div>
+              <div class=" col-6 col-md-6">
+                <div class="row">
+                  <div class=" col-3 col-md-3">
+                    <label>Hasta</label>
+                  </div>
+                  <div class=" col-9 col-md-9">
+                    <input type="number" class="form-control" id="inputMonto" placeholder="0000.00" min="0" step="any" name="Monto" title="Monto" required>
+                  </div>
+                </div>
+            </div>
+            <!-- <p class="p-0 m-0"><span>0 </span>&#x0003C;<span> 999</span></p> -->
+            <!-- <input type="range" class="form-range" name="" id=""> -->
+          </div>
+        </div>
         </div>
       </div>
     </div>

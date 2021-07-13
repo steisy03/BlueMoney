@@ -1,11 +1,22 @@
 import Route from "../libs/route";
+<<<<<<< HEAD
 import categorias from "./categorías";
 
 import { getCategorias, getGastos } from "./funciones";
 let allGastos;
+=======
+import gastosTMP from "../template/gastosTMP";
+import { getGastos } from "./funciones";
+>>>>>>> 706e8971d4b1668e9e371834f7516045d30d494e
 
-let contentGastos,
-cantidadGastos;
+var allGastos;
+var contentGastos, cantidadGastos;
+
+//inputs
+let sCategoria;
+let iDescripcion;
+let sMoneda;
+//fin inputs
 
 class Gastos extends Route {
    constructor(){
@@ -21,7 +32,20 @@ class Gastos extends Route {
       allGastos = getGastos();
       cantidadGastos = document.getElementById("cantidadGastos");
       contentGastos = document.getElementById("contentGastos");
+
+      //inputs
+      sCategoria = document.getElementById("sCategoria");
+      iDescripcion = document.getElementById("iDescripcion");
+      sMoneda = document.getElementById("sMoneda");
+      //fin inputs
+
+      //añadiendo evento update
+      sCategoria.addEventListener("change", () => this.filtrar());
+      iDescripcion.addEventListener("keyup", () => this.filtrar());
+      sMoneda.addEventListener("change", () => this.filtrar());
+      //fin añadiendo evento update
       
+<<<<<<< HEAD
       this.showGastos();
 
       const listaCategoria = document.getElementById('selectCategoria');
@@ -38,42 +62,49 @@ class Gastos extends Route {
          listaCategoria.appendChild(option);
          id++;
       });
+=======
+      this.showGastos(allGastos);
+>>>>>>> 706e8971d4b1668e9e371834f7516045d30d494e
    }
 
-   showGastos(){
-      cantidadGastos.innerHTML = allGastos.length;
-      allGastos.forEach(gasto => {
-         contentGastos.innerHTML += `
-         <div class="col-12 col-md-6  mb-4">
-            <div class="card card-gastos gasto">
-               <div class="card-body row ">
-                  <div class="info col-9 ">
-                     <h4 class="card-title">${gasto.categoria}</h4>
-                     <p class="mb-1"><strong>${gasto.moneda}</strong> ${gasto.monto}</p>
-                     <p class="">${gasto.descripcion}</p>
-                     <p class="mb-0 ">${gasto.fecha}</p>
-                  </div>
-                  <div class="funciones col-3 row align-content-around p-0">
-         
-                     <div class="col-12 d-flex justify-content-end p-0">
-                     <a href="#" class="btn-edit" title="Editar">
-                        <img src="./assets/img/edit.svg" height="25" width="26" alt="">
-                     </a>
-                     </div>
-         
-                     <div class="col-12 d-flex justify-content-end p-0">
-                     <a href="#" class="btn-delete" title="Eliminar">
-                        <img src="./assets/img/delete.svg" height="25" width="26" alt="">
-                     </a>
-                     </div>
-         
-                  </div>
-               </div>
-            </div>
-         </div>
-         `;
+   showGastos(array){
+      cantidadGastos.innerHTML = array.length;
+      contentGastos.innerHTML = "";
+      array.forEach(gasto => {
+      contentGastos.innerHTML += gastosTMP
+         .replace("{{DESCRIPCION}}", gasto.descripcion)
+         .replace("{{MONEDA}}", gasto.moneda)
+         .replace("{{MONTO}}", gasto.monto)
+         .replace("{{CATEGORIA}}", gasto.categoria)
+         .replace("{{FECHA}}", gasto.fecha);
       });
    }
+
+   filtrar(){
+      let gastos = allGastos;
+      let resultado = [];
+
+      if(iDescripcion.value != ""){
+         resultado = [];
+         gastos = gastos.filter( gastos => gastos.descripcion.includes(iDescripcion.value));
+         resultado.push.apply(resultado,gastos);
+      }
+
+      if(sCategoria.value != 0){
+         resultado = [];
+         gastos = gastos.filter( gasto => gasto.categoria == sCategoria.value);
+         resultado.push.apply(resultado,gastos);
+      }
+
+      if(sMoneda.value != 0){
+         resultado = [];
+         gastos = gastos.filter( gastos => gastos.moneda.includes(sMoneda.value));
+         resultado.push.apply(resultado,gastos);
+      }
+
+      this.showGastos(resultado);
+   }
+
 }
 
 const gastos = new Gastos();
