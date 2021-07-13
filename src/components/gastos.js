@@ -39,8 +39,6 @@ class Gastos extends Route {
       sMoneda.addEventListener("change", () => this.filtrar());
       //fin añadiendo evento update
 
-      const listaCategoria = document.getElementById('selectCategoria');
-
       const selectCategorias = getCategorias();
 
       let id = 1;
@@ -50,7 +48,7 @@ class Gastos extends Route {
          let option = document.createElement('option');
          option.value = id;
          option.innerHTML = element.nombre;
-         listaCategoria.appendChild(option);
+         sCategoria.appendChild(option);
          id++;
       });
       this.showGastos(allGastos);
@@ -79,13 +77,13 @@ class Gastos extends Route {
          resultado.push.apply(resultado,gastos);
       }
 
-      if(sCategoria.value != 0){
+      if(sCategoria.value != ""){
          resultado = [];
          gastos = gastos.filter( gasto => gasto.categoria == sCategoria.value);
          resultado.push.apply(resultado,gastos);
       }
 
-      if(sMoneda.value != 0){
+      if(sMoneda.value != ""){
          resultado = [];
          gastos = gastos.filter( gastos => gastos.moneda.includes(sMoneda.value));
          resultado.push.apply(resultado,gastos);
