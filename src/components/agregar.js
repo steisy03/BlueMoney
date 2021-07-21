@@ -37,9 +37,9 @@ class Agregar extends Route {
       let id = 1;
 
       selectCategorias.forEach(element => {
-         console.log(element);
+         console.log(element.nombre);
          let option = document.createElement('option');
-         option.value = id;
+         option.value = element.nombre;
          option.innerHTML = element.nombre;
          listaCategoria.appendChild(option);
          id++;

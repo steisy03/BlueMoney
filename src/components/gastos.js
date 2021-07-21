@@ -46,7 +46,7 @@ class Gastos extends Route {
       let id = 1;
       selectCategorias.forEach(element => {
          let option = document.createElement('option');
-         option.value = id;
+         option.value = element.nombre;
          option.innerHTML = element.nombre;
          sCategoria.appendChild(option);
          id++;
@@ -58,6 +58,7 @@ class Gastos extends Route {
       cantidadGastos.innerHTML = array.length;
       contentGastos.innerHTML = "";
       array.forEach(gasto => {
+         
       contentGastos.innerHTML += gastosTMP
          .replace("{{DESCRIPCION}}", gasto.descripcion)
          .replace("{{MONEDA}}", gasto.moneda)
@@ -79,13 +80,18 @@ class Gastos extends Route {
 
       if(sCategoria.value != ""){
          resultado = [];
-         gastos = gastos.filter( gasto => gasto.categoria == sCategoria.value);
+         if(sCategoria.value != "Todas"){
+            gastos = gastos.filter( gasto => gasto.categoria == sCategoria.value);
+         }
+
          resultado.push.apply(resultado,gastos);
       }
 
       if(sMoneda.value != ""){
          resultado = [];
-         gastos = gastos.filter( gastos => gastos.moneda.includes(sMoneda.value));
+         if(sMoneda.value != "Todas"){
+            gastos = gastos.filter( gastos => gastos.moneda.includes(sMoneda.value));
+         }
          resultado.push.apply(resultado,gastos);
       }
 

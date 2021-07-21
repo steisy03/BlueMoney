@@ -6,18 +6,24 @@
   <form class="p-4 col-11 col-md-8 col-lg-6 row justify-content-center needs-validation" id="formCategoria" novalidate>
 
     <div class="col-12 col-lg-6 mb-3">
-      <input id="nombreCategoria" class="form-control" type="text" name="nombrecategoria" placeholder="Nombre de la categoría" />
+      <input id="nombreCategoria" class="form-control" type="text" name="nombrecategoria" placeholder="Nombre de la categoría" required/>
+      <div class="invalid-feedback">
+        Debes agregar un nombre de categoría
+      </div>
     </div>
 
     <div class="col-12 col-lg-6 mb-3">
-      <select name="tipoCategoria" id="tipoCategoria" class="form-select">
-        <option selected disabled hidden>
+      <select name="tipoCategoria" id="tipoCategoria" class="form-select" required>
+        <option selected disabled hidden value="">
           Seleccione un tipo de categoría
         </option>
         <option value="ingreso">Ingreso</option>
         <option value="gasto">Gasto</option>
         <option value="ambos">Ambos</option>
       </select>
+      <div class="invalid-feedback">
+        Debes seleccionar un tipo de categoría
+      </div>
     </div>
 
     <div class="d-flex justify-content-center">
